@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get started — Mint Modeler</title>
+  <link rel="icon" href="assets/brandsite/mint-favicon-white-on-red-512.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="dist/styles.css" />
+</head>
+<body class="bg-black text-white">
+
+<main class="mx-auto flex min-h-screen max-w-[1512px] flex-col px-4 pb-10 pt-8 lg:flex-row lg:items-center lg:gap-[62px] lg:px-[72px] lg:py-[77px]">
+
+  <!-- visual (Figma "Slide 16:9 - 1") -->
+  <div class="relative h-[217px] shrink-0 overflow-hidden rounded-card bg-mint-red lg:h-[min(808px,calc(100vh-154px))] lg:min-h-[560px] lg:w-[48.35%] lg:max-w-[731px]">
+    <video class="absolute left-1/2 top-1/2 h-full w-auto max-w-none -translate-x-1/2 -translate-y-1/2 lg:h-[346.26px]" data-autoplay muted loop playsinline preload="auto" src="assets/onboarding/onboarding.mp4"></video>
+    <!-- noise texture (soft-light) -->
+    <div class="pointer-events-none absolute inset-0 bg-[#ff8f82] mix-blend-multiply" aria-hidden="true"></div>
+    <div class="noise pointer-events-none absolute inset-0 mix-blend-soft-light" aria-hidden="true"></div>
+    <a href="index.html" class="absolute left-4 top-4 grid size-10 place-items-center rounded-[11px] bg-black/25 backdrop-blur transition hover:bg-black/40 lg:left-6 lg:top-6" aria-label="Back to home">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg>
+    </a>
+  </div>
+
+  <!-- onboarding content -->
+  <section class="mt-[32px] flex min-w-0 flex-col gap-6 px-[10px] lg:gap-8 lg:mt-0 lg:max-w-[472px] lg:flex-1 lg:px-0">
+    <div class="flex flex-col gap-2">
+      <p class="eyebrow">[ get-started ]</p>
+      <h1 class="font-medium text-[42px] leading-none tracking-[-2.52px] lg:text-[54px] lg:tracking-[-3.24px]">Welcome <br class="lg:hidden" />to <span class="text-mint-red">Mint</span></h1>
+      <p class="font-medium text-[14px] leading-[2.2] text-mint-caption">Connect Mint to your agent</p>
+    </div>
+
+    <!-- setup workflow -->
+    <ol class="relative flex flex-col">
+      <li class="relative flex min-h-[115px] gap-2 lg:gap-[10px]">
+        <span class="absolute bottom-[2px] left-[6px] top-[19px] w-px bg-[#393939] lg:left-[8.5px]" aria-hidden="true"></span>
+        <span class="w-[13px] shrink-0 text-center text-[14px] font-semibold lg:w-[18px]">1</span>
+        <div class="flex flex-col gap-2">
+          <p class="text-[14px] font-semibold">Copy setup prompt</p>
+          <div class="relative self-start">
+            <button type="button" class="btn-ghost pr-2.5" data-widget-toggle aria-expanded="false" aria-controls="widget-menu">
+              <span class="flex items-center gap-1.5"><img src="assets/img/claude-star.svg" width="15" height="15" alt="" />Add to Claude</span>
+              <span class="h-[35.5px] w-px bg-mint-line"></span>
+              <img src="assets/img/unfold.svg" width="16" height="16" alt="" />
+            </button>
+            <div id="widget-menu" data-open="false" role="menu"
+                 class="widget-menu absolute -left-[41px] top-[calc(100%+10px)] z-40 w-[min(370px,calc(100vw-32px))] rounded-[24px] border border-[#373737] bg-mint-menu p-[14px] shadow-2xl shadow-black/60 lg:left-0">
+              <ul class="flex flex-col gap-1" data-agent-list></ul>
+            </div>
+          </div>
+          <p class="max-w-[297px] text-[13px] leading-[1.42] text-mint-caption lg:max-w-none">Paste the setup prompt into your agent, connect your Mint account,</p>
+        </div>
+      </li>
+      <li class="flex gap-2 lg:gap-[10px]">
+        <span class="w-[13px] shrink-0 text-center text-[14px] font-semibold lg:w-[18px]">2</span>
+        <div class="flex flex-col gap-2">
+          <p class="text-[14px] font-semibold">Start Shipping</p>
+          <p class="text-[13px] leading-[1.42] text-mint-caption xl:whitespace-nowrap">Describe what to make, then confirm the quality tier and maximum Credits.<br class="hidden lg:inline" /> Find finished models in My Assets on mint.gg.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="flex flex-col gap-2">
+      <a href="dashboard.html" class="btn-light w-full">I have installed the MCP</a>
+      <a href="dashboard.html" class="btn-ghost w-full">Connect MCP Later</a>
+    </div>
+  </section>
+</main>
+
+<div id="toast" class="toast pointer-events-none fixed bottom-6 left-1/2 z-[60] -translate-x-1/2 translate-y-2 rounded-full bg-white px-4 py-2 text-[13px] font-medium text-black opacity-0">Copied</div>
+<script src="js/common.js"></script>
+</body>
+</html>

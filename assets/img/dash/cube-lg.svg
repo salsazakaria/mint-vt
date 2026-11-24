@@ -1,0 +1,5 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="isometric-cube">
+<path id="Vector" d="M14 0H21V3.5H28V7H35V28H28V31.5H21V35H14V31.5H7V28H0V7H7V3.5H14V0ZM14 3.5V7H7V10.5H14V14H21V10.5H28V7H21V3.5H14ZM3.5 14V24.5H7V28H14V31.5H15.75V17.5H14V14H7V10.5H3.5V14ZM31.5 10.5H28V14H21V17.5H19.25V31.5H21V28H28V24.5H31.5V10.5Z" fill-rule="evenodd" clip-rule="evenodd" fill="#9E9A96"/>
+</g>
+</svg>

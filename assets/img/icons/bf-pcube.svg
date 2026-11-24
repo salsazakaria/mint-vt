@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="15" height="13.5" viewBox="0 0 15 13.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="product-cube">
+<path id="top-face" d="M6 0H9V1.5H12V3H15V4.5H12V6H3V4.5H0V3H3V1.5H6V0Z" fill="black"/>
+<path id="left-face" d="M0 6H3V7.5H6V13.5H3V12H0V6Z" fill="black"/>
+<path id="right-face" d="M12 6H15V12H12V13.5H9V7.5H12V6Z" fill="black"/>
+</g>
+</svg>

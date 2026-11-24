@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Assets — Mint Modeler</title>
+  <link rel="icon" href="assets/brandsite/mint-favicon-white-on-red-512.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="dist/styles.css" />
+  <script>
+    // apply saved sidebar state before paint (desktop only)
+    try {
+      if (localStorage.getItem('mint.sidebar') === 'collapsed') document.documentElement.dataset.sidebar = 'collapsed';
+      if (localStorage.getItem('mint.theme') === 'light') document.documentElement.dataset.theme = 'light';
+    } catch (e) {}
+  </script>
+</head>
+<body class="h-[100dvh] overflow-hidden bg-[#131315] text-white">
+
+<div class="flex h-full">
+  <!-- ================================================================
+       SIDEBAR  (lg: 245 expanded / 70 collapsed · sm: off-canvas overlay)
+       ================================================================ -->
+  <aside id="sidebar" class="sidebar fixed inset-y-0 left-0 z-40 flex w-[245px] -translate-x-full flex-col justify-between rounded-r-[48px] bg-[#131315] p-3 lg:static lg:translate-x-0 lg:rounded-none" data-collapsed="false" aria-label="Sidebar">
+    <div class="flex flex-col gap-5">
+      <div class="flex flex-col gap-[4.5px]">
+        <!-- brand header -->
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="label grid size-8 shrink-0 place-items-center rounded-[8.883px] bg-mint-red" aria-label="Mint home">
+            <img src="assets/img/logo-m.svg" width="15.263" height="12.21" alt="" />
+          </a>
+          <button type="button" data-sidebar-toggle class="sidebar-toggle grid size-[46px] shrink-0 place-items-center rounded-[15.86px] transition hover:bg-white/5" aria-label="Collapse sidebar" aria-controls="sidebar" aria-expanded="true">
+            <img src="assets/img/dash/bar-left.svg" width="20" height="20" alt="" />
+          </button>
+        </div>
+        <!-- connect agent -->
+        <div class="label flex flex-col gap-1.5">
+          <p class="text-[13px] font-semibold leading-8 text-[#6d6a69]">Connect Your Agent</p>
+          <div class="relative self-start">
+            <button type="button" class="btn-ghost pr-2.5" data-widget-toggle aria-expanded="false" aria-controls="widget-menu">
+              <span class="flex items-center gap-1.5"><img src="assets/img/claude-star.svg" width="15" height="15" alt="" />Add to Claude</span>
+              <span class="h-[35.5px] w-px bg-mint-line"></span>
+              <img src="assets/img/unfold.svg" width="16" height="16" alt="" />
+            </button>
+            <div id="widget-menu" data-open="false" role="menu"
+                 class="widget-menu absolute left-0 top-[calc(100%+10px)] z-50 w-[min(370px,calc(100vw-24px))] rounded-[24px] border border-[#373737] bg-mint-menu p-[14px] shadow-2xl shadow-black/60">
+              <ul class="flex flex-col gap-1" data-agent-list></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- asset navigation -->
+      <nav class="label flex flex-col" aria-label="My assets">
+        <p class="text-[13px] font-semibold leading-8 text-[#6d6a69]">My Assets</p>
+        <ul class="flex flex-col" data-asset-nav>
+          <li><button type="button" data-asset="Models" data-icon="models" aria-current="page" class="asset-btn"><span class="relative size-4 shrink-0"><img src="assets/img/dash/models.svg" class="absolute" style="inset:8.33% 8.32% 8.33% 8.34%" alt="" /></span><span>Models</span></button></li>
+          <li><button type="button" data-asset="Worlds" data-icon="worlds" class="asset-btn"><span class="relative size-4 shrink-0"><img src="assets/img/dash/worlds.svg" class="absolute" style="inset:8.33% 8.34% 8.33% 8.33%" alt="" /></span><span>Worlds</span></button></li>
+          <li><button type="button" data-asset="Packs" data-icon="packs" class="asset-btn"><span class="relative size-4 shrink-0"><img src="assets/img/dash/packs.svg" class="absolute" style="inset:8.33% 8.32% 12.5% 8.34%" alt="" /></span><span>Packs</span></button></li>
+          <li><button type="button" data-asset="Materials" data-icon="materials" class="asset-btn"><span class="relative size-4 shrink-0"><img src="assets/img/dash/materials.svg" class="absolute" style="inset:0" alt="" /></span><span>Materials</span></button></li>
+          <li><button type="button" data-asset="Images" data-icon="images" class="asset-btn"><span class="relative size-4 shrink-0"><img src="assets/img/dash/images.svg" class="absolute" style="inset:16.67% 8.32% 16.67% 8.34%" alt="" /></span><span>Images</span></button></li>
+          <li><button type="button" data-asset="Audios" data-icon="audios" class="asset-btn"><span class="relative size-4 shrink-0"><img src="assets/img/dash/audios.svg" class="absolute" style="inset:16.67% 20.83%" alt="" /></span><span>Audios</span></button></li>
+          <li><button type="button" data-asset="Videos" data-icon="videos" class="asset-btn"><span class="relative size-4 shrink-0"><img src="assets/img/dash/videos.svg" class="absolute" style="inset:0" alt="" /></span><span>Videos</span></button></li>
+          <li><button type="button" data-asset="Studio Renders" data-icon="renders" class="asset-btn"><span class="relative size-4 shrink-0"><img src="assets/img/dash/renders.svg" class="absolute" style="inset:8.33% 8.31% 12.5% 8.34%" alt="" /></span><span>Studio Renders</span></button></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- account -->
+    <div class="relative">
+      <button type="button" data-account-toggle class="account flex h-[46px] w-full items-center justify-between rounded-2xl border border-[rgba(48,48,51,0.7)] bg-mint-panel px-2 transition hover:border-[#45454a]" aria-expanded="false" aria-controls="account-menu">
+        <span class="flex items-center gap-2">
+          <span class="relative size-8 shrink-0 overflow-hidden rounded-full bg-[#b9efc2]"><img src="assets/img/dash/avatar.png" class="absolute inset-0 size-full object-cover" alt="" /></span>
+          <span class="label flex flex-col items-start gap-1 whitespace-nowrap text-left">
+            <span class="text-[11px] font-semibold leading-[14.5px] tracking-[-0.11px]">Salsa Zakaria</span>
+            <span class="text-[12px] leading-[13.3px] tracking-[-0.05px] text-[#6a6c6a]">salsa@f.inc</span>
+          </span>
+        </span>
+        <img src="assets/img/unfold.svg" class="label" width="16" height="16" alt="" />
+      </button>
+      <div id="account-menu" data-open="false" role="menu" class="widget-menu absolute bottom-[calc(100%+8px)] left-0 z-50 w-[221px] rounded-2xl border border-[#373737] bg-mint-menu p-1.5 shadow-2xl shadow-black/60">
+        <a href="#" role="menuitem" data-todo="account-page" class="menu-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="5.5" r="2.75"/><path d="M2.75 13.5c.8-2.4 2.8-3.75 5.25-3.75s4.45 1.35 5.25 3.75" stroke-linecap="round"/></svg>
+          Account
+        </a>
+        <button type="button" role="menuitemcheckbox" aria-checked="false" data-theme-toggle class="menu-item w-full">
+          <svg data-theme-icon="sun" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="2.8"/><path d="M8 1.5v1.3M8 13.2v1.3M1.5 8h1.3M13.2 8h1.3M3.4 3.4l.9.9M11.7 11.7l.9.9M3.4 12.6l.9-.9M11.7 4.3l.9-.9"/></svg>
+          <svg data-theme-icon="moon" class="hidden" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M13.5 9.6A5.6 5.6 0 0 1 6.4 2.5a5.6 5.6 0 1 0 7.1 7.1Z"/></svg>
+          <span data-theme-label>Light Theme</span>
+        </button>
+        <div class="my-1 h-px bg-white/[0.06] theme-divider"></div>
+        <a href="index.html" role="menuitem" class="menu-item !text-mint-red">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.75H3.75a1 1 0 0 0-1 1v8.5a1 1 0 0 0 1 1H6M10.5 11l3-3-3-3M13.25 8H6.5"/></svg>
+          Sign out
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- sm backdrop -->
+  <div data-sidebar-backdrop class="fixed inset-0 z-30 hidden bg-black/30 lg:hidden"></div>
+
+  <!-- ================================================================
+       MAIN CONTENT
+       ================================================================ -->
+  <main class="relative min-w-0 flex-1 p-3 lg:pl-0">
+    <div class="relative h-full overflow-hidden rounded-[46px] bg-mint-panel lg:rounded-[48px]">
+      <!-- sm: open sidebar -->
+      <button type="button" data-sidebar-open class="absolute left-6 top-6 grid h-[36.3px] w-[46px] place-items-center rounded-btn border border-mint-line transition hover:bg-white/5 lg:hidden" aria-label="Open sidebar" aria-controls="sidebar" aria-expanded="false">
+        <img src="assets/img/dash/bar-left.svg" width="20" height="20" alt="" />
+      </button>
+
+      <!-- empty state -->
+      <section class="absolute left-1/2 top-[calc(50%-40px)] flex w-[292px] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 text-center lg:top-1/2 lg:w-[419px]" aria-live="polite">
+        <div class="relative size-[100px] rounded-[32px] bg-[#2a2a2a]">
+          <img data-empty-icon src="assets/img/dash/cube-lg.svg" class="absolute left-1/2 top-1/2 size-[35px] -translate-x-1/2 -translate-y-1/2" alt="" />
+        </div>
+        <div class="flex flex-col items-center">
+          <h1 class="text-[20px] font-semibold leading-none tracking-[-0.38px]" data-empty-title>No Models Yet</h1>
+          <p class="font-medium text-[14px] leading-[2.2] text-mint-caption"><span data-empty-noun>Models</span> you create with mint in your AI agent will appear here</p>
+        </div>
+        <button type="button" data-refresh class="btn-light w-auto px-[14px]">
+          <svg data-refresh-icon class="mr-1.5 hidden size-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 8A5.5 5.5 0 1 1 11.9 4.1"/><path d="M13.5 2.5v3h-3"/></svg>
+          Refresh
+        </button>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div id="toast" class="toast pointer-events-none fixed bottom-6 left-1/2 z-[60] -translate-x-1/2 translate-y-2 rounded-full bg-white px-4 py-2 text-[13px] font-medium text-black opacity-0">Copied</div>
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

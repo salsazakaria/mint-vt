@@ -1,0 +1,317 @@
+/* ---------- fonts (retro theme): VT323 for display, Geist Mono for everything else ---------- */
+@font-face { font-family: 'VT323'; font-weight: 400; font-display: swap; src: url('../assets/fonts/vt323-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 400; font-display: swap; src: url('../assets/fonts/geist-mono-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 500; font-display: swap; src: url('../assets/fonts/geist-mono-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 600; font-display: swap; src: url('../assets/fonts/geist-mono-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-weight: 700; font-display: swap; src: url('../assets/fonts/geist-mono-latin-700-normal.woff2') format('woff2'); }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { background: #000; color: #fff; -webkit-font-smoothing: antialiased; }
+  body { font-family: theme('fontFamily.sans'); }
+  ::selection { background: #f2412e; color: #fff; }
+}
+
+@layer components {
+  /* ---------- type ---------- */
+  /* eyebrow: terminal prompt line, e.g. "> [ HOW IT WORKS ]_" */
+  .eyebrow { @apply font-display text-[20px] leading-none tracking-[0.04em] uppercase text-mint-red lg:text-[22px]; }
+  .eyebrow::before { content: '> '; color: #555; }
+  .eyebrow::after { content: '_'; animation: blink 1s steps(1) infinite; }
+  .h-section { @apply font-display font-normal uppercase text-[46px] leading-[0.92] tracking-[0.01em] lg:text-[76px]; }
+  .h-section .dim { @apply text-mint-fg2; }
+  .h-card { @apply font-display font-normal uppercase text-[26px] leading-none tracking-[0.02em] lg:text-[36px]; }
+
+  /* ---------- buttons ---------- */
+  /* primary: inverted white block with a hard offset shadow that "presses" in */
+  .btn-light {
+    @apply relative inline-flex h-10 min-w-[124px] items-center justify-center bg-white px-4
+           font-display text-[21px] leading-none tracking-[0.06em] uppercase text-mint-bg0 whitespace-nowrap;
+    border: 1px solid #fff;
+    box-shadow: 3px 3px 0 rgba(255,255,255,.18);
+    transition: transform 80ms, box-shadow 80ms, background 120ms;
+  }
+  .btn-light:hover { transform: translate(1px, 1px); box-shadow: 2px 2px 0 rgba(255,255,255,.18); color: #0a0a0a; }
+  .btn-light:active { transform: translate(3px, 3px); box-shadow: 0 0 0 rgba(0,0,0,0); }
+  /* secondary: hairline outline that lights up on hover */
+  .btn-ghost {
+    @apply inline-flex h-10 items-center justify-center gap-3 px-3 bg-transparent
+           font-display text-[21px] leading-none tracking-[0.06em] uppercase text-mint-fg1 whitespace-nowrap;
+    border: 1px solid rgba(255,255,255,.16);
+    transition: border-color 120ms, color 120ms, background 120ms, transform 80ms;
+  }
+  .btn-ghost:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,.03); }
+  .btn-ghost:active { transform: translate(1px, 1px); }
+  .btn-ghost .bg-mint-line { background: rgba(255,255,255,.16); height: 100%; }
+  .btn-ghost:hover .bg-mint-line { background: #fff; }
+  .nav-link {
+    @apply px-3 py-1.5 font-display text-[21px] leading-none tracking-[0.05em] uppercase text-mint-fg2;
+    border: 1px solid transparent;
+    transition: border-color 120ms, color 120ms;
+  }
+  .nav-link:hover { border-color: rgba(255,255,255,.4); color: #fff; }
+
+  /* ---------- horizontal scrollers (sm) ---------- */
+  /* overflow-y: hidden stops the row from scrolling vertically while card reveal animations hang below it */
+  .hscroll { @apply flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory; scrollbar-width: none; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
+  .hscroll::-webkit-scrollbar { display: none; }
+  .hscroll > * { @apply snap-start; }
+
+  /* video fill */
+  .vfeather { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%); }
+  .vfill { @apply absolute inset-0 h-full w-full object-cover pointer-events-none; }
+}
+
+/* ---------- hero animation mask (from mint-gg): fade at the bottom, soften behind the headline ---------- */
+.hero-mask {
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 0%, #000 60%, transparent 94%),
+    radial-gradient(ellipse 34% 20% at 50% 40%, rgb(0 0 0 / 0.35), #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, #000 0%, #000 60%, transparent 94%),
+    radial-gradient(ellipse 34% 20% at 50% 40%, rgb(0 0 0 / 0.35), #000 100%);
+  mask-composite: intersect;
+}
+
+/* ---------- Showcase coverflow ---------- */
+.showcase-track { scrollbar-width: none; cursor: grab; }
+.showcase-track::-webkit-scrollbar { display: none; }
+.showcase-track.dragging { cursor: grabbing; scroll-snap-type: none; }
+.showcase-slide { will-change: transform; transform-origin: center center; }
+
+/* ---------- logo marquee ---------- */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee { animation: marquee 40s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .marquee { animation: none; } }
+
+/* ---------- widget menu ---------- */
+.widget-menu { transform-origin: top center; transition: opacity .18s steps(4), transform .18s steps(4), clip-path .18s steps(4); clip-path: inset(0); }
+.widget-menu[data-open="false"] { opacity: 0; transform: translateY(-6px); clip-path: inset(0 0 100% 0); pointer-events: none; }
+
+/* copy pill: icon by default, label on hover / keyboard focus */
+.copy-pill .copy-label { max-width: 0; opacity: 0; transition: max-width .25s ease, opacity .2s ease; }
+.copy-pill .copy-ic { max-width: 15px; transition: max-width .2s ease, opacity .15s ease; }
+.group:hover .copy-pill .copy-label, .group:focus-visible .copy-pill .copy-label { max-width: 140px; opacity: 1; }
+.group:hover .copy-pill .copy-ic, .group:focus-visible .copy-pill .copy-ic { max-width: 0; opacity: 0; }
+
+/* ---------- mobile menu ---------- */
+.mobile-menu { transition: opacity .25s steps(5), visibility .25s; }
+.mobile-menu[data-open="false"] { opacity: 0; visibility: hidden; }
+
+/* ---------- dashboard sidebar ---------- */
+.sidebar { transition: width .28s cubic-bezier(.2,.8,.2,1), transform .28s cubic-bezier(.2,.8,.2,1); }
+.sidebar .label { transition: opacity .18s ease; white-space: nowrap; }
+.sidebar[data-collapsed="true"] .label { opacity: 0; pointer-events: none; }
+
+/* reveal on scroll */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .42s steps(6), transform .42s steps(6), filter .42s steps(6); filter: brightness(1.8); }
+.reveal.is-in { opacity: 1; transform: none; filter: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+.toast { transition: opacity .2s steps(4), transform .2s steps(4); }
+
+/* film-grain noise (replaces Figma's tiled Noise bitmap) */
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .45;
+}
+
+/* ---------- dashboard ---------- */
+@layer components {
+  .asset-btn {
+    @apply relative flex h-9 w-full items-center gap-2 px-[14px] text-left text-[13px] font-medium text-[#9e9a96] transition-colors hover:bg-white/[0.04] hover:text-[#d9d6d2];
+    border-left: 3px solid transparent;
+  }
+  .asset-btn[aria-current="page"] { @apply bg-white/[0.04] text-white; border-left-color: #fff; }
+}
+.sidebar { overflow: visible; }
+@media (min-width: 1024px) {
+  .sidebar[data-collapsed="true"] { width: 70px; }
+  .sidebar[data-collapsed="true"] .label { display: none; }
+  .sidebar[data-collapsed="true"] .account { width: 46px; border-color: transparent; background: transparent; padding-left: 7px; }
+}
+html[data-sidebar="collapsed"] .sidebar { width: 70px; }
+html[data-sidebar="collapsed"] .sidebar .label { display: none; }
+@media (max-width: 1023px) {
+  .sidebar[data-open="true"] { transform: translateX(0); box-shadow: 24px 0 60px rgba(0,0,0,.45); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin .8s linear infinite; }
+
+/* ---------- dashboard menus + light theme ---------- */
+@layer components {
+  .menu-item { @apply flex items-center gap-2.5 px-3 py-2 text-left text-[13px] font-medium text-[#cfccc8] transition-colors hover:bg-white hover:text-mint-bg0; }
+}
+html[data-theme="light"] body,
+html[data-theme="light"] .sidebar { background: #f3f3f2; color: #0f0f11; }
+html[data-theme="light"] main > div { background: #ffffff; box-shadow: 0 0 0 1px #e6e5e2; }
+html[data-theme="light"] .asset-btn { color: #6d6a69; }
+html[data-theme="light"] .asset-btn:hover { background: rgba(0,0,0,.04); color: #0f0f11; }
+html[data-theme="light"] .asset-btn[aria-current="page"] { background: #e7e6e3; color: #0f0f11; }
+html[data-theme="light"] .sidebar-toggle:hover,
+html[data-theme="light"] [data-sidebar-open]:hover { background: rgba(0,0,0,.05); }
+html[data-theme="light"] [data-sidebar-open] { border-color: #dcdbd8; }
+html[data-theme="light"] .sidebar img[src$="bar-left.svg"],
+html[data-theme="light"] [data-sidebar-open] img { filter: brightness(.6); }
+html[data-theme="light"] .btn-ghost { border-color: #dcdbd8; color: #0f0f11; }
+html[data-theme="light"] .btn-ghost .bg-mint-line { background: #dcdbd8; }
+html[data-theme="light"] .btn-ghost img[src$="unfold.svg"], html[data-theme="light"] .account img[src$="unfold.svg"] { filter: invert(1) brightness(.4); }
+html[data-theme="light"] .account { background: #ffffff; border-color: #e3e2df; }
+html[data-theme="light"] .account span span:first-child { color: #0f0f11; }
+html[data-theme="light"] .account span span:last-child { color: #7b7b7b; }
+html[data-theme="light"] main section .bg-\[\#2a2a2a\] { background: #f1f0ee; }
+html[data-theme="light"] main section h1 { color: #0f0f11; }
+html[data-theme="light"] main .btn-light { background: #0f0f11; color: #fff; }
+html[data-theme="light"] .widget-menu { background: #ffffff; border-color: #e3e2df; box-shadow: 0 20px 50px rgba(0,0,0,.12); }
+html[data-theme="light"] .widget-menu .menu-item { color: #3a3836; }
+html[data-theme="light"] .widget-menu .menu-item:hover { background: #f3f3f2; color: #0f0f11; }
+html[data-theme="light"] .widget-menu .theme-divider { background: #ecebe8; }
+html[data-theme="light"] .widget-menu [data-agent] { background: #f3f3f2; }
+html[data-theme="light"] .widget-menu [data-agent]:hover { background: #ebeae7; }
+html[data-theme="light"] .widget-menu [data-agent] > span:first-child { color: #0f0f11; }
+html[data-theme="light"] .widget-menu .copy-pill { background: #ffffff; border-color: #dcdbd8; }
+html[data-theme="light"] .widget-menu .copy-pill img { filter: invert(1); }
+html[data-theme="light"] .widget-menu .copy-label { color: #0f0f11; }
+html[data-theme="light"] .sidebar p.text-\[\#6d6a69\] { color: #8a8784; }
+
+/* ---------- returning visitors (js/returning-visitor.js) ---------- */
+.rv-eyebrow { display: none; }
+html.is-returning .rv-eyebrow { display: inline-flex; }
+html.is-returning .rv-default-only { display: none; }
+/* hide only the swappable elements until the swap (or the 1.5 s failsafe) runs */
+html.is-returning:not(.rv-ready) [data-rv] { visibility: hidden; }
+
+/* =====================================================================
+   RETRO THEME LAYER
+   Look borrowed from designproject.io/skills-repo: square corners,
+   hairline borders, hard offset shadows, stepped animation, film grain.
+   Display type is VT323, body copy is Geist Mono.
+   ===================================================================== */
+@keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+/* square everything (also covers arbitrary rounded-[..] utilities and JS-built markup) */
+*, *::before, *::after { border-radius: 0 !important; }
+
+html { background: #000; }
+body { font-family: theme('fontFamily.mono'); font-feature-settings: 'zero' 0; }
+::selection { background: #fff; color: #0a0a0a; }
+
+/* ---------- display type ---------- */
+h1, h2, h3 {
+  font-family: theme('fontFamily.display') !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.015em !important;
+  text-transform: uppercase !important;
+}
+/* page heroes (landing, brand, get-started) */
+header h1, main > section h1, #cta-stage h2 {
+  font-size: 50px !important; line-height: .9 !important;
+}
+@media (min-width: 1024px) {
+  header h1, main > section h1, #cta-stage h2 { font-size: 88px !important; line-height: .88 !important; }
+}
+/* hero headline: keep it on one line per row at phone widths */
+@media (max-width: 420px) { header h1 { font-size: 44px !important; } }
+/* card titles written with utilities (built-for, ship-faster, brand sections) */
+article h3:not(.h-card), #ship h3 { font-size: 26px !important; line-height: 1 !important; }
+#built-for article h3 { font-size: 22px !important; white-space: normal !important; }
+@media (min-width: 1024px) { #built-for article h3 { font-size: 30px !important; } }
+/* mono captions are wider than the old sans: let them wrap inside the card */
+#built-for article p { white-space: normal !important; max-width: 380px; }
+@media (min-width: 1024px) { #ship .h-section { font-size: 54px; } }
+.brand-h2, main h2.text-\[28px\] { font-size: 36px !important; line-height: 1 !important; }
+@media (min-width: 1024px) { main h2.text-\[28px\] { font-size: 44px !important; line-height: 1.6 !important; } }
+/* dashboard empty state */
+[data-empty-title] { font-size: 34px !important; line-height: 1 !important; margin-bottom: 6px; }
+/* mobile menu links */
+#mobile-menu nav a { font-family: theme('fontFamily.display'); font-weight: 400; font-size: 40px; letter-spacing: .03em; text-transform: uppercase; line-height: 1; }
+#mobile-menu nav a::before { content: '> '; color: #555; }
+#mobile-menu nav a:hover { color: #fff; background: rgba(255,255,255,.04); }
+
+/* body copy: mono reads better a touch looser than the old sans tracking */
+p { letter-spacing: 0 !important; }
+
+/* ---------- cards: hairline frame drawn above the media ---------- */
+.rounded-card { outline: 1px solid rgba(255,255,255,.1); outline-offset: -1px; transition: outline-color 120ms, transform 120ms; }
+article.rounded-card:hover, #built-for article:hover { outline-color: #fff; }
+#built-for article { outline: 1px solid rgba(255,255,255,.1); outline-offset: -1px; transition: outline-color 120ms, transform 120ms steps(2); }
+@media (hover: hover) { #built-for article:hover, #how article:hover > div:first-child { transform: translateY(-2px); } }
+#how article > div:first-child { transition: transform 120ms steps(2), outline-color 120ms; }
+#how article:hover > div:first-child { outline-color: #fff; }
+
+/* ---------- round icon buttons (showcase / built-for arrows) become square keys ---------- */
+[data-showcase-prev], [data-showcase-next], [data-built-prev], [data-built-next] {
+  border-color: rgba(255,255,255,.16) !important; height: 64px !important; width: 64px !important;
+  transition: border-color 120ms, background 120ms, transform 80ms !important;
+}
+[data-showcase-prev]:hover, [data-showcase-next]:hover, [data-built-prev]:hover, [data-built-next]:hover { border-color: #fff !important; background: rgba(255,255,255,.04) !important; }
+[data-showcase-prev]:active, [data-showcase-next]:active, [data-built-prev]:active, [data-built-next]:active { transform: translate(1px,1px); }
+[data-showcase-dots] > * { width: 8px !important; height: 8px !important; }
+
+/* ---------- mobile nav keys ---------- */
+[data-menu-open], [data-menu-close].grid, [data-sidebar-open] { border-color: rgba(255,255,255,.16) !important; }
+[data-menu-open]:hover, [data-menu-close].grid:hover { border-color: #fff !important; }
+
+/* ---------- hero badge + returning eyebrow: terminal chips ---------- */
+.rv-default-only, .rv-eyebrow { border-color: rgba(255,255,255,.16) !important; background: rgba(0,0,0,.6) !important; backdrop-filter: none !important; }
+.rv-eyebrow { font-family: theme('fontFamily.display'); font-size: 19px !important; letter-spacing: .05em !important; text-transform: uppercase; }
+
+/* ---------- menus (Add to Claude, account): CRT panel with hard shadow ---------- */
+.widget-menu {
+  background: #050505 !important; border: 1px solid #fff !important;
+  box-shadow: 4px 4px 0 rgba(255,255,255,.12), 10px 10px 0 rgba(0,0,0,.75) !important;
+}
+.widget-menu [data-agent] { background: rgba(255,255,255,.02) !important; border: 1px solid rgba(255,255,255,.08); transition: border-color 120ms, background 120ms !important; }
+.widget-menu [data-agent]:hover { border-color: #fff; background: rgba(255,255,255,.04) !important; }
+.widget-menu [data-agent] > span:first-child { font-family: theme('fontFamily.display'); font-weight: 400 !important; font-size: 20px !important; letter-spacing: .04em !important; text-transform: uppercase; }
+.widget-menu .copy-pill { background: transparent !important; border-color: rgba(255,255,255,.16) !important; }
+.widget-menu [data-agent]:hover .copy-pill { background: #fff !important; border-color: #fff !important; }
+.widget-menu [data-agent]:hover .copy-pill img { filter: invert(1); }
+.widget-menu .copy-label { font-family: theme('fontFamily.display'); font-size: 17px !important; letter-spacing: .06em !important; text-transform: uppercase; color: #0a0a0a !important; }
+
+/* ---------- toast: achievement pop ---------- */
+#toast { font-family: theme('fontFamily.display'); font-size: 20px !important; letter-spacing: .06em; text-transform: uppercase; box-shadow: 3px 3px 0 rgba(255,255,255,.18); padding: 8px 16px !important; }
+
+/* ---------- dashboard ---------- */
+.account { border-color: rgba(255,255,255,.1) !important; background: transparent !important; }
+.account:hover { border-color: #fff !important; }
+main > div.bg-mint-panel { outline: 1px solid rgba(255,255,255,.1); outline-offset: -1px; background: #0d0d0d; }
+body.bg-\[\#131315\], .sidebar.bg-\[\#131315\] { background: #0a0a0a !important; }
+.sidebar p.text-\[\#6d6a69\] { font-family: theme('fontFamily.display'); font-weight: 400 !important; font-size: 19px !important; letter-spacing: .05em; text-transform: uppercase; color: #555 !important; }
+.sidebar p.text-\[\#6d6a69\]::before { content: '// '; }
+main section .bg-\[\#2a2a2a\] { background: transparent !important; border: 1px solid rgba(255,255,255,.4); }
+
+/* ---------- get-started step numbers as pixel counters ---------- */
+ol > li > span.shrink-0.text-center { font-family: theme('fontFamily.display'); font-weight: 400 !important; font-size: 22px !important; line-height: 1; }
+ol > li p.text-\[14px\].font-semibold { font-family: theme('fontFamily.display'); font-weight: 400 !important; font-size: 22px !important; letter-spacing: .05em !important; text-transform: uppercase; }
+
+/* ---------- film grain + scanlines over the whole page ---------- */
+body::before {
+  content: ''; position: fixed; inset: -2%; z-index: 9990; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .09; mix-blend-mode: overlay;
+  animation: grain-flicker .16s steps(3) infinite;
+}
+body::after {
+  content: ''; position: fixed; inset: 0; z-index: 9991; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
+}
+@keyframes grain-flicker {
+  0% { transform: translate(0, 0); } 25% { transform: translate(-1.5%, 1%); }
+  50% { transform: translate(1.2%, -1.5%); } 75% { transform: translate(-.8%, -1%); } 100% { transform: translate(0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+  .eyebrow::after { animation: none; }
+}
+
+/* ---------- light theme (dashboard) keeps working ---------- */
+html[data-theme="light"] .btn-light { background: #0a0a0a; color: #fff; border-color: #0a0a0a; box-shadow: 3px 3px 0 rgba(0,0,0,.2); }
+html[data-theme="light"] .widget-menu { background: #fff !important; border-color: #0a0a0a !important; box-shadow: 4px 4px 0 rgba(0,0,0,.15) !important; }
+html[data-theme="light"] main > div.bg-mint-panel { background: #fff; }
+html[data-theme="light"] .asset-btn[aria-current="page"] { border-left-color: #0a0a0a; }
+html[data-theme="light"] body::after { display: none; }

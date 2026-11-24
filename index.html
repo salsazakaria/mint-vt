@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mint Modeler — Production-ready 3D your agent can ship</title>
+  <meta name="description" content="Clean topology, true scale, every part and material separate. Give your agent a 3D expert." />
+  <link rel="icon" href="assets/brandsite/mint-favicon-white-on-red-512.svg" type="image/svg+xml" />
+  <link rel="preload" href="assets/fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/geist-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="dist/styles.css" />
+  <!-- returning-visitor copy: decides before first paint, swaps on DOMContentLoaded (see file header) -->
+  <script src="js/returning-visitor.js"></script>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+<!-- ================================================================
+     HERO  (lg 1512x951 / sm 402x771)
+     ================================================================ -->
+<header id="top" class="relative z-30 h-[771px] lg:h-[951px]">
+  <!-- Hero animation: cursor-reactive pixel grid (js/hero-animation.js, from mint-gg) -->
+  <div id="hero-animation" class="hero-mask pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <!-- bottom fade (fade-two-black + black-overlay) -->
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] lg:h-[230px] bg-gradient-to-b from-transparent via-black/80 to-black"></div>
+
+  <!-- NAV lg -->
+  <nav class="absolute inset-x-0 top-6 z-30 hidden lg:block">
+    <div class="relative mx-auto flex h-9 max-w-[1512px] items-center justify-between px-[72px]">
+      <a href="index.html" class="flex h-8 items-center gap-[14px]" aria-label="Mint Modeler home">
+        <span class="flex items-center gap-[9px]">
+          <span class="grid size-8 place-items-center rounded-[8.883px] bg-mint-red"><img src="assets/img/logo-m.svg" width="15.263" height="12.21" alt="" /></span>
+          <img src="assets/img/wordmark.svg" width="49.2115" height="17.5847" alt="mint" />
+        </span>
+        <img src="assets/img/nav-divider.svg" class="h-[15.5px] w-px" alt="" />
+        <img src="assets/img/modeler.svg" width="76.39" height="16.333" alt="Modeler" />
+      </a>
+      <div class="absolute left-1/2 top-0 flex -translate-x-1/2 items-center gap-3">
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="#showcase">Showcase</a>
+        <a class="nav-link" href="https://mint.gg/benchmark" target="_blank" rel="noopener">Benchmark</a>
+        <a class="nav-link" href="https://mint.gg/guides" target="_blank" rel="noopener">Guides</a>
+        <a class="nav-link" href="https://docs.mint.gg/developers/modeler" target="_blank" rel="noopener">Documentation</a>
+      </div>
+      <a href="dashboard.html" class="btn-light">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- NAV sm -->
+  <nav class="absolute inset-x-4 top-[18px] z-30 flex items-center justify-between lg:hidden">
+    <a href="index.html" class="grid size-14 place-items-center rounded-[15.467px] bg-mint-red" aria-label="Mint home">
+      <img src="assets/img/logo-m-lg.svg" width="26.574" height="21.259" alt="" />
+    </a>
+    <button type="button" data-menu-open class="grid size-14 place-items-center rounded-[15.53px] border border-[rgba(83,83,83,0.6)] bg-black" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <img src="assets/img/menu-btn.svg" width="18" height="13.5" alt="" />
+    </button>
+  </nav>
+
+  <!-- hero copy -->
+  <div class="pointer-events-none absolute inset-x-0 top-[173px] z-20 flex flex-col items-center px-[30px] lg:top-[245px]">
+    <div data-dither-safe class="pointer-events-auto flex flex-col items-center">
+      <div class="flex items-center gap-2">
+        <div class="rv-default-only flex h-[36.3px] items-center rounded-btn border border-mint-line bg-black/40 px-3 backdrop-blur-sm">
+          <span class="flex items-center gap-2">
+            <img src="assets/img/badge-wordmark.svg" width="27.89" height="9.966" alt="mint" />
+            <img src="assets/img/badge-divider.svg" class="h-[8.8px] w-px" alt="" />
+            <img src="assets/img/badge-modeler.svg" width="43.292" height="9.257" alt="Modeler" />
+          </span>
+        </div>
+        <!-- returning visitors only (shown by html.is-returning) -->
+        <p class="rv-eyebrow h-[36.3px] items-center gap-2 rounded-btn border border-mint-line bg-black/40 px-3 text-[13px] font-medium tracking-[-0.13px] text-[#c9c7c3] backdrop-blur-sm">
+          <span class="size-1.5 rounded-full bg-[#7b7b7b]" aria-hidden="true"></span>Welcome back
+        </p>
+      </div>
+      <h1 data-rv="hero-headline" class="mt-[19px] max-lg:whitespace-nowrap text-center font-medium capitalize text-[38px] leading-[42px] tracking-[-2.28px] lg:mt-6 lg:text-[62px] lg:leading-[62.275px] lg:tracking-[-3.72px]">
+        <span class="text-mint-red">Production-ready</span> 3D<br />Your agent can ship.
+      </h1>
+      <p data-rv="hero-description" class="mt-6 max-w-[321px] text-center font-medium text-[14px] leading-[2.2] text-mint-caption lg:max-w-none">
+        Clean topology, true scale, every part and material separate. Built by the team behind 250M+ views of 3D content.
+      </p>
+      <div class="mt-6 flex items-center gap-2 max-[389px]:gap-1.5 lg:relative">
+        <a href="get-started.html" data-rv="hero-cta" class="btn-light w-auto min-w-[124px] shrink-0 whitespace-nowrap max-[389px]:px-3 max-[389px]:text-[13px]">Get Started</a>
+        <div class="shrink-0 lg:relative">
+          <button type="button" class="btn-ghost shrink-0 whitespace-nowrap pr-2.5 max-[389px]:gap-2 max-[389px]:pl-2.5 max-[389px]:text-[13px]" data-widget-toggle aria-expanded="false" aria-controls="widget-menu">
+            <span class="flex items-center gap-1.5">
+              <img src="assets/img/claude-star.svg" width="15" height="15" alt="" />
+              Add to Claude
+            </span>
+            <span class="h-[35.5px] w-px bg-mint-line"></span>
+            <img src="assets/img/unfold.svg" width="16" height="16" alt="" />
+          </button>
+
+          <!-- widget-menu (Figma 543:57022) -->
+          <div id="widget-menu" data-open="false" role="menu"
+               class="widget-menu absolute top-[calc(100%+11px)] z-40 rounded-[24px] border border-[#373737] bg-mint-menu p-[14px] text-left shadow-2xl shadow-black/60 max-lg:inset-x-4 max-lg:mx-auto max-lg:max-w-[370px] lg:left-0 lg:top-[calc(100%+17px)] lg:w-[370px]">
+            <ul class="flex flex-col gap-1" data-agent-list></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- supported models marquee -->
+  <div class="absolute inset-x-0 bottom-0 z-10 h-[136px] lg:mx-auto lg:max-w-[1512px] lg:px-[73px] lg:pr-[71px]">
+    <div class="relative h-full overflow-hidden opacity-50">
+      <div class="marquee flex h-full w-max items-center">
+        <div class="flex items-center gap-[72px] pr-[72px]" data-logo-row>
+          <img src="assets/img/logos/logo1.svg" class="h-[33.2px] w-auto" alt="OpenAI" />
+          <img src="assets/img/logos/logo2.svg" class="h-[31.4px] w-auto opacity-90" alt="Cursor" />
+          <img src="assets/img/logos/logo3.svg" class="h-[30px] w-auto" alt="Codex" />
+          <img src="assets/img/logos/logo4.svg" class="h-[35px] w-auto" alt="OpenClaw" />
+          <img src="assets/img/logos/logo5.svg" class="h-[28px] w-auto" alt="Claude" />
+          <img src="assets/img/logos/logo6.svg" class="h-[28px] w-auto" alt="Gemini" />
+          <img src="assets/img/logos/logo7.svg" class="h-[24px] w-auto" alt="Devin" />
+          <img src="assets/img/logos/logo8.svg" class="h-[27px] w-auto" alt="Grok Bot" />
+          <img src="assets/img/logos/logo9.svg" class="h-[27.8px] w-auto opacity-90" alt="Nebula" />
+          <span class="relative inline-block h-[36.15px] w-[106.3px]" role="img" aria-label="Grok">
+            <img src="assets/img/logos/logo10b.svg" class="absolute left-0 top-0 h-[36.15px] w-[37.66px]" alt="" />
+            <img src="assets/img/logos/logo10a.svg" class="absolute left-[42.4px] top-[7.2px] h-[21.8px] w-[63.88px]" alt="" />
+          </span>
+        </div>
+        <div class="flex items-center gap-[72px] pr-[72px]" data-logo-row aria-hidden="true">
+          <img src="assets/img/logos/logo1.svg" class="h-[33.2px] w-auto" alt="" />
+          <img src="assets/img/logos/logo2.svg" class="h-[31.4px] w-auto opacity-90" alt="" />
+          <img src="assets/img/logos/logo3.svg" class="h-[30px] w-auto" alt="" />
+          <img src="assets/img/logos/logo4.svg" class="h-[35px] w-auto" alt="" />
+          <img src="assets/img/logos/logo5.svg" class="h-[28px] w-auto" alt="" />
+          <img src="assets/img/logos/logo6.svg" class="h-[28px] w-auto" alt="" />
+          <img src="assets/img/logos/logo7.svg" class="h-[24px] w-auto" alt="" />
+          <img src="assets/img/logos/logo8.svg" class="h-[27px] w-auto" alt="" />
+          <img src="assets/img/logos/logo9.svg" class="h-[27.8px] w-auto opacity-90" alt="" />
+          <span class="relative inline-block h-[36.15px] w-[106.3px]">
+            <img src="assets/img/logos/logo10b.svg" class="absolute left-0 top-0 h-[36.15px] w-[37.66px]" alt="" />
+            <img src="assets/img/logos/logo10a.svg" class="absolute left-[42.4px] top-[7.2px] h-[21.8px] w-[63.88px]" alt="" />
+          </span>
+        </div>
+      </div>
+      <div class="pointer-events-none absolute inset-y-0 left-0 w-[72px] bg-gradient-to-r from-black to-transparent"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 w-[72px] bg-gradient-to-l from-black to-transparent"></div>
+    </div>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div id="mobile-menu" data-open="false" class="mobile-menu fixed inset-0 z-50 flex flex-col bg-black/95 px-4 pt-[18px] backdrop-blur-md lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="flex items-center justify-between">
+    <a href="index.html" class="grid size-14 place-items-center rounded-[15.467px] bg-mint-red" aria-label="Mint home"><img src="assets/img/logo-m-lg.svg" width="26.574" height="21.259" alt="" /></a>
+    <button type="button" data-menu-close class="grid size-14 place-items-center rounded-[15.53px] border border-[rgba(83,83,83,0.6)] bg-black" aria-label="Close menu">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg>
+    </button>
+  </div>
+  <nav class="mt-10 flex flex-col">
+    <a data-menu-close class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="#features">Features</a>
+    <a data-menu-close class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="#showcase">Showcase</a>
+    <a class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="https://mint.gg/benchmark" target="_blank" rel="noopener">Benchmark</a>
+    <a class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="https://mint.gg/guides" target="_blank" rel="noopener">Guides</a>
+    <a class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="https://docs.mint.gg/developers/modeler" target="_blank" rel="noopener">Documentation</a>
+  </nav>
+  <div class="mt-auto mb-8 flex gap-2">
+    <a href="get-started.html" class="btn-light h-12 flex-1">Get Started</a>
+    <a href="dashboard.html" class="btn-ghost h-12 flex-1">Sign In</a>
+  </div>
+</div>
+
+<main class="mx-auto max-w-[1512px]">
+
+  <!-- ================================================================
+       HOW IT WORKS
+       ================================================================ -->
+  <section id="how" class="pt-16 lg:pt-16">
+    <div class="px-4 lg:px-[72px]">
+      <div class="reveal flex flex-col gap-3">
+        <p class="eyebrow">[ How it works ]</p>
+        <h2 data-rv="how-heading" class="h-section">From prompt<br />to <span class="dim">production</span></h2>
+      </div>
+    </div>
+    <div class="hscroll mt-8 gap-3 scroll-px-4 px-4 lg:mt-8 lg:grid lg:grid-cols-3 lg:gap-[18px] lg:overflow-visible lg:px-[72px]">
+      <article class="reveal flex w-[255.4px] shrink-0 flex-col gap-[7px] lg:w-auto lg:gap-3">
+        <div class="relative aspect-[255.43/188.12] overflow-hidden rounded-card bg-[#f9f9f9] lg:aspect-[444/327]">
+          <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-how-it-works-connect-light.mp4"></video>
+        </div>
+        <div class="flex flex-col gap-[7px] lg:gap-3">
+          <h3 class="h-card">Connect</h3>
+          <p class="text-[14px] leading-[1.82] text-mint-body">Paste the setup prompt into your agent and connect your Mint account</p>
+        </div>
+      </article>
+      <article class="reveal flex w-[255.4px] shrink-0 flex-col gap-[7px] lg:w-auto lg:gap-3" style="transition-delay:.08s">
+        <div class="relative aspect-[255.43/188.12] overflow-hidden rounded-card bg-[#f9f9f9] lg:aspect-[444/327]">
+          <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-how-it-works-prompt-typing-light.mp4"></video>
+        </div>
+        <div class="flex flex-col gap-[7px] lg:gap-3">
+          <h3 class="h-card">Prompt</h3>
+          <p class="text-[14px] leading-[1.82] text-mint-body">Describe what to make, then confirm the quality tier and maximum credits, everything within your control</p>
+        </div>
+      </article>
+      <article class="reveal flex w-[255.4px] shrink-0 flex-col gap-[7px] lg:w-auto lg:gap-3" style="transition-delay:.16s">
+        <div class="relative aspect-[255.43/188.12] overflow-hidden rounded-card bg-[#ec190c] lg:aspect-[444/327]">
+          <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-how-it-works-ship-red.mp4"></video>
+        </div>
+        <div class="flex flex-col gap-[7px] lg:gap-3">
+          <h3 class="h-card">Ship</h3>
+          <p class="text-[14px] leading-[1.82] text-mint-body">Get production-ready 3D. You can find all finished models in My Assets on mint.gg.</p>
+        </div>
+      </article>
+      <span class="w-1 shrink-0 lg:hidden" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FEATURES — your agent's 3D expert
+       ================================================================ -->
+  <section id="features" class="scroll-mt-6 px-4 pt-[72px] lg:px-[72px] lg:pt-[118px]">
+    <div class="reveal flex flex-col gap-3">
+      <p class="eyebrow">[ Your agent's 3D expert ]</p>
+      <h2 class="h-section">Built the way a 3D<br />artist <span class="dim">would build it.</span></h2>
+    </div>
+
+    <div class="mt-8 flex flex-col gap-3 lg:gap-[18px]">
+      <div class="grid gap-3 lg:grid-cols-[760fr_590fr] lg:gap-[18px]">
+        <!-- Clean topology -->
+        <article class="reveal group relative h-[332px] overflow-hidden rounded-card bg-[#ec190c]">
+          <video class="vfeather absolute left-1/2 top-0 h-[332px] w-[442.67px] max-w-none -translate-x-1/2 lg:left-auto lg:right-0 lg:translate-x-0" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-clean-topology-red.mp4"></video>
+          <div class="absolute bottom-[18px] left-[18px] flex w-[334px] max-w-[calc(100%-36px)] flex-col gap-3 text-white lg:bottom-8 lg:left-8 lg:w-[306px]">
+            <h3 class="h-card">Clean Topology</h3>
+            <p class="text-[14px] leading-[1.82]">Real openings, real interiors &amp; crisp edges, down to the seats and the grille slots.</p>
+          </div>
+        </article>
+        <!-- True to scale -->
+        <article class="reveal relative h-[332px] overflow-hidden rounded-card bg-[#1c1c1f]" style="transition-delay:.08s">
+          <video class="vfeather absolute left-1/2 top-0 h-[332px] w-[442.67px] max-w-none -translate-x-1/2 lg:left-auto lg:right-0 lg:translate-x-0" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-true-to-scale.mp4"></video>
+          <div class="absolute bottom-[18px] left-[18px] flex w-[334px] max-w-[calc(100%-36px)] flex-col gap-3 lg:bottom-8 lg:left-8 lg:w-[306px]">
+            <h3 class="h-card text-white">True to scale</h3>
+            <p class="text-[14px] leading-[1.82] text-mint-body">Built from reference photos and real dimensions, in meters.</p>
+          </div>
+        </article>
+      </div>
+      <div class="grid gap-3 lg:grid-cols-[590fr_760fr] lg:gap-[18px]">
+        <!-- Separate parts -->
+        <article class="reveal relative h-[332px] overflow-hidden rounded-card bg-[#f9f9f9]">
+          <video class="vfeather absolute bottom-[82px] left-1/2 h-[257px] w-[342.67px] max-w-none -translate-x-1/2 lg:bottom-[5px] lg:left-auto lg:right-[-33px] lg:h-[362px] lg:w-[482.67px] lg:translate-x-0" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-separate-materials.mp4"></video>
+          <div class="absolute bottom-[18px] left-[18px] flex w-[334px] max-w-[calc(100%-36px)] flex-col gap-3 lg:bottom-8 lg:left-8 lg:w-[404px]">
+            <h3 class="h-card text-black">Separate parts and materials</h3>
+            <p class="text-[14px] leading-[1.82] text-[#222]">Every part named, with its own material. Recolor, swap or hide parts in your own tools.</p>
+          </div>
+        </article>
+        <!-- GLB delivery -->
+        <article class="reveal relative h-[332px] overflow-hidden rounded-card bg-[#f9f9f9]" style="transition-delay:.08s">
+          <video class="vfeather absolute bottom-0 left-1/2 h-[332px] w-[442.67px] max-w-none -translate-x-1/2 max-lg:-top-[24px] lg:left-auto lg:right-0 lg:translate-x-0" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-glb-delivery.mp4"></video>
+          <div class="absolute bottom-[18px] left-[18px] flex w-[334px] max-w-[calc(100%-36px)] flex-col gap-3 lg:bottom-8 lg:left-8 lg:w-[404px]">
+            <h3 class="h-card text-black">GLB delivery</h3>
+            <p class="text-[14px] leading-[1.82] text-[#222]">A self-contained GLB with embedded textures. Open it in your 3D tools and check supported conversion workflows.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SHOWCASE (coverflow)
+       ================================================================ -->
+  <section id="showcase" class="scroll-mt-6 pt-[72px] lg:pt-[118px]">
+    <div class="flex items-center gap-8 px-4 lg:px-[72px]">
+      <div class="reveal flex flex-1 flex-col gap-3">
+        <p class="eyebrow">[ showcase ]</p>
+        <h2 class="h-section">See what's<br />possible <span class="dim">with Mint.</span></h2>
+      </div>
+      <div class="hidden items-center gap-2 lg:flex">
+        <button type="button" data-showcase-prev class="grid h-[84px] w-[83px] place-items-center rounded-full border border-mint-line transition hover:bg-white/5 disabled:opacity-30" aria-label="Previous demo">
+          <img src="assets/img/icons/chev-left.svg" width="24" height="24" alt="" />
+        </button>
+        <button type="button" data-showcase-next class="grid h-[84px] w-[83px] place-items-center rounded-full border border-mint-line transition hover:bg-white/5 disabled:opacity-30" aria-label="Next demo">
+          <img src="assets/img/icons/chev-right.svg" width="24" height="24" alt="" />
+        </button>
+      </div>
+    </div>
+
+    <!--
+      Demo videos: data-video + data-poster per slide. Only the centre slide's video is
+      loaded and played; side slides show the lightweight poster image.
+    -->
+    <div class="showcase mt-8 lg:mt-[42px]" data-showcase>
+      <div class="showcase-track relative h-[171px] touch-pan-y select-none overflow-hidden lg:h-[595px]" data-showcase-track>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-01.mp4" data-poster="assets/showcase/demo-01.jpg"></div>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-02.mp4" data-poster="assets/showcase/demo-02.jpg"></div>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-03.mp4" data-poster="assets/showcase/demo-03.jpg"></div>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-04.mp4" data-poster="assets/showcase/demo-04.jpg"></div>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-05.mp4" data-poster="assets/showcase/demo-05.jpg"></div>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-06.mp4" data-poster="assets/showcase/demo-06.jpg"></div>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-07.mp4" data-poster="assets/showcase/demo-07.jpg"></div>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-08.mp4" data-poster="assets/showcase/demo-08.jpg"></div>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-09.mp4" data-poster="assets/showcase/demo-09.jpg"></div>
+        <div class="showcase-slide absolute left-1/2 top-1/2 overflow-hidden rounded-card bg-mint-card" data-video="assets/showcase/demo-10.mp4" data-poster="assets/showcase/demo-10.jpg"></div>
+      </div>
+      <div class="mt-5 flex justify-center gap-1.5 lg:hidden" data-showcase-dots></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       BUILT FOR YOU
+       ================================================================ -->
+  <section id="built-for" class="pt-[72px] lg:pt-[118px]">
+    <div class="flex items-center gap-8 px-4 lg:px-[72px]">
+      <div class="reveal flex flex-1 flex-col gap-3">
+        <p class="eyebrow">[ Multi-Purpose 3D Tool ]</p>
+        <h2 class="h-section">Built for <span class="dim">You.</span></h2>
+      </div>
+      <div class="hidden items-center gap-2 lg:flex">
+        <button type="button" data-built-prev class="grid h-[84px] w-[83px] place-items-center rounded-full border border-mint-line transition hover:bg-white/5 disabled:opacity-30" aria-label="Previous use case">
+          <img src="assets/img/icons/chev-left.svg" width="24" height="24" alt="" />
+        </button>
+        <button type="button" data-built-next class="grid h-[84px] w-[83px] place-items-center rounded-full border border-mint-line transition hover:bg-white/5 disabled:opacity-30" aria-label="Next use case">
+          <img src="assets/img/icons/chev-right.svg" width="24" height="24" alt="" />
+        </button>
+      </div>
+    </div>
+    <div data-built-row class="hscroll mt-8 gap-3 scroll-px-4 px-4 lg:gap-[18px] lg:scroll-px-[72px] lg:px-[72px]" data-drag-scroll>
+      <!-- 01 -->
+      <article class="relative h-[329.4px] w-[255.7px] shrink-0 overflow-hidden rounded-card bg-[#ec190c] lg:h-[572px] lg:w-[444px]">
+        <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-robotics-simulation.mp4"></video>
+        <div class="absolute bottom-[18px] left-[18px] flex w-[220px] flex-col gap-2 lg:bottom-8 lg:left-8 lg:w-auto">
+          <div class="flex items-center gap-2">
+            <span class="relative size-6 shrink-0">
+              <img class="absolute" style="inset:75% 50% 12.5% 12.5%" src="assets/img/icons/bf-base.svg" alt="" />
+              <img class="absolute" style="inset:18.75% 18.75% 25% 18.75%" src="assets/img/icons/bf-arm.svg" alt="" />
+              <img class="absolute" style="inset:37.5% 12.5% 31.25% 50%" src="assets/img/icons/bf-gripper.svg" alt="" />
+              <img class="absolute" style="inset:56.25% 25% 31.25% 62.5%" src="assets/img/icons/bf-gsq.svg" alt="" />
+            </span>
+            <h3 class="whitespace-nowrap text-[18px] font-semibold leading-[1.2] tracking-[-0.72px] text-white lg:text-[20px] lg:tracking-[-0.8px]">Robotics &amp; simulation</h3>
+          </div>
+          <p class="text-[13px] leading-[1.82] text-white lg:whitespace-nowrap">Objects with every door, drawer &amp; handle as its own part.</p>
+        </div>
+      </article>
+      <!-- 02 -->
+      <article class="relative h-[329.4px] w-[255.7px] shrink-0 overflow-hidden rounded-card bg-[#f9f9f9] lg:h-[572px] lg:w-[444px]">
+        <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-product-showcase.mp4"></video>
+        <div class="absolute bottom-[18px] left-[18px] flex w-[220px] flex-col gap-2 lg:bottom-8 lg:left-8 lg:w-auto">
+          <div class="flex items-center gap-2">
+            <span class="relative size-6 shrink-0">
+              <img class="absolute" style="inset:12.5% 18.75% 31.25% 18.75%" src="assets/img/icons/bf-pcube.svg" alt="" />
+              <img class="absolute" style="inset:75% 18.75% 12.5% 18.75%" src="assets/img/icons/bf-plinth.svg" alt="" />
+            </span>
+            <h3 class="whitespace-nowrap text-[18px] font-semibold leading-[1.2] tracking-[-0.72px] text-black lg:text-[20px] lg:tracking-[-0.8px]">Product visualization</h3>
+          </div>
+          <p class="text-[13px] leading-[1.82] text-black lg:whitespace-nowrap">Swappable parts and finishes at true dimensions.</p>
+        </div>
+      </article>
+      <!-- 03 -->
+      <article class="relative h-[329.4px] w-[255.7px] shrink-0 overflow-hidden rounded-card bg-[#f9f9f9] lg:h-[572px] lg:w-[444px]">
+        <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-car-showcase.mp4"></video>
+        <div class="absolute bottom-[18px] left-[18px] flex w-[220px] flex-col gap-2 lg:bottom-8 lg:left-8 lg:w-auto">
+          <div class="flex items-center gap-2">
+            <span class="relative size-6 shrink-0">
+              <img class="absolute" style="inset:75% 68.75% 12.5% 18.75%" src="assets/img/icons/bf-tire.svg" alt="" />
+              <img class="absolute" style="inset:75% 18.75% 12.5% 68.75%" src="assets/img/icons/bf-tire.svg" alt="" />
+              <img class="absolute" style="inset:12.5% 12.5% 25% 12.5%" src="assets/img/icons/bf-autobody.svg" alt="" />
+            </span>
+            <h3 class="whitespace-nowrap text-[18px] font-semibold leading-[1.2] tracking-[-0.72px] text-black lg:text-[20px] lg:tracking-[-0.8px]">Automotive</h3>
+          </div>
+          <p class="text-[13px] leading-[1.82] text-black lg:whitespace-nowrap">Vehicles &amp; accessories with separate wheels, doors and glass.</p>
+        </div>
+      </article>
+      <!-- 04 -->
+      <article class="relative h-[329.4px] w-[255.7px] shrink-0 overflow-hidden rounded-card bg-[#f9f9f9] lg:h-[572px] lg:w-[444px]">
+        <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-robot-showcase.mp4"></video>
+        <div class="absolute bottom-[18px] left-[18px] flex w-[220px] flex-col gap-2 lg:bottom-8 lg:left-8 lg:w-auto">
+          <div class="flex items-center gap-2">
+            <span class="relative size-6 shrink-0">
+              <img class="absolute" style="inset:12.5%" src="assets/img/icons/bf-bubble.svg" alt="" />
+              <img class="absolute" style="inset:25% 25% 37.5% 25%" src="assets/img/icons/bf-face.svg" alt="" />
+            </span>
+            <h3 class="whitespace-nowrap text-[18px] font-semibold leading-[1.2] tracking-[-0.72px] text-black lg:text-[20px] lg:tracking-[-0.8px]">AI agents &amp; apps</h3>
+          </div>
+          <p class="text-[13px] leading-[1.82] text-black lg:whitespace-nowrap">3D models your agent can request on its own.</p>
+        </div>
+      </article>
+      <!-- 05 -->
+      <article class="relative h-[329.4px] w-[255.7px] shrink-0 overflow-hidden rounded-card bg-[#f9f9f9] lg:h-[572px] lg:w-[444px]">
+        <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-games-xr.mp4"></video>
+        <div class="absolute bottom-[18px] left-[18px] flex w-[220px] flex-col gap-2 lg:bottom-8 lg:left-8 lg:w-auto">
+          <div class="flex items-center gap-2">
+            <span class="relative size-6 shrink-0">
+              <img class="absolute" style="inset:18.75% 43.75% 68.75% 43.75%" src="assets/img/icons/bf-strap.svg" alt="" />
+              <img class="absolute" style="inset:43.75% 12.5% 37.5% 12.5%" src="assets/img/icons/bf-tabs.svg" alt="" />
+              <img class="absolute" style="inset:31.25% 18.75% 18.75% 18.75%" src="assets/img/icons/bf-headset.svg" alt="" />
+            </span>
+            <h3 class="whitespace-nowrap text-[18px] font-semibold leading-[1.2] tracking-[-0.72px] text-black lg:text-[20px] lg:tracking-[-0.8px]">Games &amp; XR</h3>
+          </div>
+          <p class="text-[13px] leading-[1.82] text-black lg:whitespace-nowrap">Static GLB props for your game and XR projects.</p>
+        </div>
+      </article>
+      <!-- 06 -->
+      <article class="relative h-[329.4px] w-[255.7px] shrink-0 overflow-hidden rounded-card bg-[#f9f9f9] lg:h-[572px] lg:w-[444px]">
+        <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-architecture.mp4"></video>
+        <div class="absolute bottom-[18px] left-[18px] flex w-[220px] flex-col gap-2 lg:bottom-8 lg:left-8 lg:w-auto">
+          <div class="flex items-center gap-2">
+            <span class="relative size-6 shrink-0">
+              <img class="absolute" style="inset:12.5% 50% 18.75% 12.5%" src="assets/img/icons/bf-tall.svg" alt="" />
+              <img class="absolute" style="inset:25% 12.5% 18.75% 50%" src="assets/img/icons/bf-offset.svg" alt="" />
+              <img class="absolute" style="inset:81.25% 12.5% 12.5% 12.5%" src="assets/img/icons/bf-sbase.svg" alt="" />
+            </span>
+            <h3 class="whitespace-nowrap text-[18px] font-semibold leading-[1.2] tracking-[-0.72px] text-black lg:text-[20px] lg:tracking-[-0.8px]">Architecture</h3>
+          </div>
+          <p class="text-[13px] leading-[1.82] text-black lg:whitespace-nowrap">Buildings and landmarks with named elements.</p>
+        </div>
+      </article>
+      <span class="w-1 shrink-0 lg:w-[54px]" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SHIP FASTER
+       ================================================================ -->
+  <section id="ship" class="px-4 pt-[44px] lg:flex lg:items-center lg:gap-[54px] lg:px-[72px] lg:pt-[118px]">
+    <div class="reveal relative hidden aspect-[916/655] min-w-0 overflow-hidden rounded-card bg-mint-card lg:block lg:flex-1 lg:max-w-[916px]">
+      <video class="vfill" style="object-position:13.7% 50%" data-autoplay muted loop playsinline preload="none" src="assets/landing/modeler-demo-web-optimized.mp4"></video>
+    </div>
+    <div class="flex flex-col gap-[42px] lg:w-[380px] lg:shrink-0 xl:w-[436px]">
+      <div class="reveal flex flex-col gap-3">
+        <p class="eyebrow">[ ship faster ]</p>
+        <h2 class="h-section">Everything you<br />need to <span class="dim">build in 3D</span></h2>
+      </div>
+      <ul class="flex flex-col gap-6 xl:w-[398px]">
+        <li class="reveal flex flex-col gap-2">
+          <div class="flex items-center gap-3">
+            <span class="relative size-6 shrink-0"><img class="absolute" style="inset:8.34% 8.32% 8.33% 8.35%" src="assets/img/icons/sf-cube.svg" alt="" /></span>
+            <h3 class="text-[20px] font-semibold leading-[1.2] tracking-[-0.8px]">3D Models</h3>
+          </div>
+          <p class="text-[13px] capitalize leading-[1.82] text-mint-body">Products, Objects, props, characters, Studio Renders, Etc</p>
+        </li>
+        <li class="reveal flex flex-col gap-2">
+          <div class="flex items-center gap-3">
+            <span class="relative size-6 shrink-0"><img class="absolute" style="inset:8.34% 8.33% 12.5% 8.34%" src="assets/img/icons/sf-pack.svg" alt="" /></span>
+            <h3 class="text-[20px] font-semibold leading-[1.2] tracking-[-0.8px]">3D Assets Packs</h3>
+          </div>
+          <p class="text-[13px] capitalize leading-[1.82] text-mint-body">Coordinated sets for a scene</p>
+        </li>
+        <li class="reveal flex flex-col gap-2">
+          <div class="flex items-center gap-3">
+            <span class="relative size-6 shrink-0"><img class="absolute" style="inset:8.34% 8.34% 8.33% 8.32%" src="assets/img/icons/sf-worlds.svg" alt="" /></span>
+            <h3 class="text-[20px] font-semibold leading-[1.2] tracking-[-0.8px]">3D Worlds</h3>
+          </div>
+          <p class="text-[13px] capitalize leading-[1.82] text-mint-body">Walkable 3D spaces</p>
+        </li>
+        <li class="reveal flex flex-col gap-2">
+          <div class="flex items-center gap-3">
+            <span class="relative size-6 shrink-0"><img class="absolute inset-0" src="assets/img/icons/sf-materials.svg" alt="" /></span>
+            <h3 class="text-[20px] font-semibold leading-[1.2] tracking-[-0.8px]">Materials</h3>
+          </div>
+          <p class="text-[13px] capitalize leading-[1.82] text-mint-body">PBR surfaces and textures</p>
+        </li>
+        <li class="reveal flex flex-col gap-2">
+          <div class="flex items-center gap-3">
+            <span class="relative size-6 shrink-0"><img class="absolute" style="inset:8.33% 8.33% 8.34% 8.32%" src="assets/img/icons/sf-media.svg" alt="" /></span>
+            <h3 class="text-[20px] font-semibold leading-[1.2] tracking-[-0.8px]">Image, Audio, Video</h3>
+          </div>
+          <p class="text-[13px] capitalize leading-[1.82] text-mint-body">Generate images, Sound effects, music, ambience, Video Scenes</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FINAL CTA  (Base-style flowing dither field)
+       ================================================================ -->
+  <section class="px-4 pt-[46px] lg:px-[72px] lg:pt-[118px]">
+    <div class="relative h-[542px] overflow-hidden rounded-card bg-mint-cta" id="cta-stage">
+      <canvas id="cta-canvas" class="absolute inset-0 block" aria-hidden="true"></canvas>
+      <div class="relative z-10 flex h-full flex-col items-center justify-center gap-[18px] px-[14px] text-center lg:-mt-[7px] lg:items-start lg:px-[72px] lg:text-left">
+        <div class="flex h-[45.8px] items-center rounded-full border border-white/10 bg-[#242427] pl-[7.7px] pr-[13.6px]">
+          <span class="relative block h-[31px] w-[74.1px]">
+            <span class="absolute left-0 top-0 grid size-[31px] place-items-center rounded-full bg-mint-red"><img src="assets/img/cta-logo-m.svg" width="14.777" height="11.821" alt="" /></span>
+            <img class="absolute left-[36.3px] top-[8.8px]" src="assets/img/cta-wordmark.svg" width="37.766" height="13.495" alt="mint" />
+          </span>
+        </div>
+        <h2 data-rv="cta-heading" class="font-semibold capitalize text-[38px] leading-[42px] tracking-[-2.28px] lg:text-[62px] lg:leading-[62.275px] lg:tracking-[-3.72px]">Give your agent<br />a 3D expert</h2>
+        <p data-rv="cta-subtext" class="max-w-[342px] text-[14px] leading-[2.2] lg:max-w-none lg:whitespace-nowrap">Production-ready models from one prompt: clean topology, true scale, every part and material separate.</p>
+        <a href="get-started.html" class="btn-light">Get Started</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="mx-auto max-w-[1512px] px-4 pb-[42px] pt-[17px] lg:px-[72px] lg:pt-[42px]">
+  <div class="flex items-center justify-center pt-6 lg:justify-between">
+    <a href="index.html" class="hidden h-8 items-center gap-[14px] lg:flex" aria-label="Mint Modeler home">
+      <span class="flex items-center gap-[9px]">
+        <span class="grid size-8 place-items-center rounded-[8.883px] bg-mint-red"><img src="assets/img/logo-m.svg" width="15.263" height="12.21" alt="" /></span>
+        <img src="assets/img/wordmark.svg" width="49.2115" height="17.5847" alt="mint" />
+      </span>
+      <img src="assets/img/nav-divider.svg" class="h-[15.5px] w-px" alt="" />
+      <img src="assets/img/modeler.svg" width="76.39" height="16.333" alt="Modeler" />
+    </a>
+    <nav class="flex items-center gap-3">
+      <a class="nav-link" href="https://mint.gg/guides" target="_blank" rel="noopener">Guide</a>
+      <a class="nav-link" href="https://docs.mint.gg/developers/modeler" target="_blank" rel="noopener">Docs</a>
+      <a class="nav-link" href="brand.html">Brandkit</a>
+      <a class="nav-link" href="https://x.com/mintdotgg" target="_blank" rel="noopener">Social</a>
+    </nav>
+  </div>
+</footer>
+
+<div id="toast" class="toast pointer-events-none fixed bottom-6 left-1/2 z-[60] -translate-x-1/2 translate-y-2 rounded-full bg-white px-4 py-2 text-[13px] font-medium text-black opacity-0">Copied</div>
+
+<script src="js/dither.js"></script>
+<script src="js/hero-animation.js" defer></script>
+<script src="js/common.js"></script>
+<script src="js/landing.js"></script>
+</body>
+</html>

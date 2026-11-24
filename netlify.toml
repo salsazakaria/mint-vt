@@ -1,0 +1,9 @@
+# Static site: dist/styles.css is committed, so no build step is needed.
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MINT brand identity — logos, color, type & motion</title>
+  <meta name="description" content="The official logos and motion assets for MintGG." />
+  <link rel="icon" href="assets/brandsite/mint-favicon-white-on-red-512.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="dist/styles.css" />
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+<header class="relative mx-auto max-w-[1512px]">
+  <!-- NAV lg -->
+  <nav class="relative z-30 hidden pt-6 lg:block">
+    <div class="relative mx-auto flex h-9 max-w-[1512px] items-center justify-between px-[72px]">
+      <a href="index.html" class="flex h-8 items-center gap-[14px]" aria-label="Mint Modeler home">
+        <span class="flex items-center gap-[9px]">
+          <span class="grid size-8 place-items-center rounded-[8.883px] bg-mint-red"><img src="assets/img/logo-m.svg" width="15.263" height="12.21" alt="" /></span>
+          <img src="assets/img/wordmark.svg" width="49.2115" height="17.5847" alt="mint" />
+        </span>
+        <img src="assets/img/nav-divider.svg" class="h-[15.5px] w-px" alt="" />
+        <img src="assets/img/modeler.svg" width="76.39" height="16.333" alt="Modeler" />
+      </a>
+      <div class="absolute left-1/2 top-0 flex -translate-x-1/2 items-center gap-3">
+        <a class="nav-link" href="index.html#features">Features</a>
+        <a class="nav-link" href="index.html#showcase">Showcase</a>
+        <a class="nav-link" href="https://mint.gg/benchmark" target="_blank" rel="noopener">Benchmark</a>
+        <a class="nav-link" href="https://mint.gg/guides" target="_blank" rel="noopener">Guides</a>
+        <a class="nav-link" href="https://docs.mint.gg/developers/modeler" target="_blank" rel="noopener">Documentation</a>
+      </div>
+      <a href="dashboard.html" class="btn-light">Sign In</a>
+    </div>
+  </nav>
+
+
+  <!-- NAV sm -->
+  <nav class="relative z-30 mx-4 flex items-center justify-between pt-[18px] lg:hidden">
+    <a href="index.html" class="grid size-14 place-items-center rounded-[15.467px] bg-mint-red" aria-label="Mint home">
+      <img src="assets/img/logo-m-lg.svg" width="26.574" height="21.259" alt="" />
+    </a>
+    <button type="button" data-menu-open class="grid size-14 place-items-center rounded-[15.53px] border border-[rgba(83,83,83,0.6)] bg-black" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <img src="assets/img/menu-btn.svg" width="18" height="13.5" alt="" />
+    </button>
+  </nav>
+
+  <!-- hero -->
+  <section class="flex flex-col px-4 pt-[34px] lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-[43px] lg:px-[132px] lg:pt-[153px]">
+    <div class="relative aspect-[370/210] w-full overflow-hidden rounded-card bg-white lg:aspect-[644.7/365.9] lg:w-[51.7%] lg:max-w-[645px] lg:shrink-0 lg:rounded-[34.85px]">
+      <video class="vfill" data-autoplay muted loop playsinline preload="auto" src="assets/brandsite/mint-brandsite.mp4"></video>
+    </div>
+    <div class="mt-[42px] flex flex-col items-center gap-[18px] text-center lg:mt-0 lg:items-start lg:gap-6 lg:text-left">
+      <h1 class="whitespace-nowrap font-medium capitalize text-[38px] leading-[42px] tracking-[-2.28px] xl:text-[62px] xl:leading-[62.275px] xl:tracking-[-3.72px] lg:text-[48px] lg:leading-[50px]">
+        Introducing MINT’s<br />New <span class="text-mint-red">brand identity</span>
+      </h1>
+      <p class="max-w-[321px] font-medium text-[14px] leading-[2.2] text-mint-caption lg:max-w-none">The official logos and motion assets for MintGG. Ready for whatever you’re making.</p>
+      <div class="flex items-center gap-2">
+        <a href="https://drive.google.com/drive/folders/1t608m5P_gTfLdiZeXKpHzOiwI4yhofsy?usp=drive_link" target="_blank" rel="noopener" class="btn-light w-auto px-[14px]">Download brandkit</a>
+        <a href="assets/brandsite/mint-logo-horizontal-white-on-red-white-wordmark.svg" download="mint-logo.svg" class="btn-ghost">Download logo</a>
+      </div>
+    </div>
+  </section>
+</header>
+
+<!-- mobile menu -->
+<div id="mobile-menu" data-open="false" class="mobile-menu fixed inset-0 z-50 flex flex-col bg-black/95 px-4 pt-[18px] backdrop-blur-md lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="flex items-center justify-between">
+    <a href="index.html" class="grid size-14 place-items-center rounded-[15.467px] bg-mint-red" aria-label="Mint home"><img src="assets/img/logo-m-lg.svg" width="26.574" height="21.259" alt="" /></a>
+    <button type="button" data-menu-close class="grid size-14 place-items-center rounded-[15.53px] border border-[rgba(83,83,83,0.6)] bg-black" aria-label="Close menu">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg>
+    </button>
+  </div>
+  <nav class="mt-10 flex flex-col">
+    <a data-menu-close class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="index.html#features">Features</a>
+    <a data-menu-close class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="index.html#showcase">Showcase</a>
+    <a class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="https://mint.gg/benchmark" target="_blank" rel="noopener">Benchmark</a>
+    <a class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="https://mint.gg/guides" target="_blank" rel="noopener">Guides</a>
+    <a class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="https://docs.mint.gg/developers/modeler" target="_blank" rel="noopener">Documentation</a>
+  </nav>
+  <div class="mt-auto mb-8 flex gap-2">
+    <a href="get-started.html" class="btn-light h-12 flex-1">Get Started</a>
+    <a href="dashboard.html" class="btn-ghost h-12 flex-1">Sign In</a>
+  </div>
+</div>
+
+
+<main id="guidelines" class="mx-auto max-w-[1512px] scroll-mt-6 px-4 pt-[121px] lg:px-[132px] lg:pt-[152px]">
+  <article class="flex flex-col gap-6 lg:gap-[42px]">
+      <div class="reveal flex flex-col gap-[3px] capitalize lg:gap-2 ">
+        <h2 class="text-[28px] font-semibold leading-[28px] tracking-[-1.12px] lg:text-[32px] lg:leading-[73.46px] lg:tracking-[-1.28px]">What’s new</h2>
+        <p class="text-[13px] leading-[2.32] text-mint-body lg:text-[18px]">Inspired by our core values, the new identity captures the spirit of MINT and the people who build with us. It’s bolder, more technical, and a lot more fun.</p>
+      </div>
+      <div class="reveal relative w-full aspect-[1248/701] overflow-hidden rounded-[24px] bg-mint-red lg:rounded-[82px]">
+        <video class="vfill scale-[1.015]" data-autoplay muted loop playsinline preload="none" src="assets/brandsite/brandsite-sm-logo.mp4"></video>
+      </div>
+      <div class="reveal flex flex-col gap-[3px] capitalize lg:gap-2 ">
+        <h2 class="text-[28px] font-semibold leading-[28px] tracking-[-1.12px] lg:text-[32px] lg:leading-[73.46px] lg:tracking-[-1.28px]">Symbol</h2>
+        <p class="text-[13px] leading-[2.32] text-mint-body lg:text-[18px]">Our new mark is a pixel-built “m”: simple, distinctive, and made of the same blocks every 3D model starts from. It’s small enough to sit in a favicon and strong enough to carry a billboard.</p>
+      </div>
+      <div class="reveal flex flex-col gap-[3px] capitalize lg:gap-2 ">
+        <h2 class="text-[28px] font-semibold leading-[28px] tracking-[-1.12px] lg:text-[32px] lg:leading-[73.46px] lg:tracking-[-1.28px]">Wordmark</h2>
+        <p class="text-[13px] leading-[2.32] text-mint-body lg:text-[18px]">The lowercase “mint” wordmark pairs with the symbol to feel direct and unfussy. No ornament, no noise. It stays legible at any size, in any color, on any background.</p>
+      </div>
+      <div class="reveal relative w-full aspect-[1248/702] overflow-hidden rounded-[24px] bg-[#f7dcd8] lg:rounded-[82px]">
+        <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/brandsite/brandsite-sm-color.mp4"></video>
+      </div>
+      <div class="reveal flex flex-col gap-[3px] capitalize lg:gap-2 ">
+        <h2 class="text-[28px] font-semibold leading-[28px] tracking-[-1.12px] lg:text-[32px] lg:leading-[73.46px] lg:tracking-[-1.28px]">Color System</h2>
+        <p class="text-[13px] leading-[2.32] text-mint-body lg:text-[18px]">Red is our signal. We paired a hot red-orange with deep black and clean white to keep things high-contrast, confident, and impossible to miss. Use it loudly, or let it appear as a single spark.</p>
+      </div>
+      <div class="reveal relative w-full aspect-[1920/1080] overflow-hidden rounded-[24px] bg-[#f7dcd8] lg:rounded-[64px]">
+        <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/brandsite/brandsite-sm-fonts.mp4"></video>
+      </div>
+      <div class="reveal flex flex-col gap-[3px] capitalize lg:gap-2 ">
+        <h2 class="text-[28px] font-semibold leading-[28px] tracking-[-1.12px] lg:text-[32px] lg:leading-[73.46px] lg:tracking-[-1.28px]">Typography</h2>
+        <p class="text-[13px] leading-[2.32] text-mint-body lg:text-[18px]">Our typefaces are Geist and Geist Mono. Geist keeps our words clear and modern, and Geist Mono brings the developer’s eye for detail. Together they speak both design and code.</p>
+      </div>
+      <div class="reveal relative aspect-[1248/583.4] w-full overflow-hidden rounded-[24px] bg-black lg:rounded-[82px]">
+        <img class="absolute inset-0 h-full w-full object-cover" src="assets/brandsite/visual-identity.png" alt="Grid of dithered MINT visuals" loading="lazy" />
+      </div>
+      <div class="reveal flex flex-col gap-[3px] capitalize lg:gap-2 ">
+        <h2 class="text-[28px] font-semibold leading-[28px] tracking-[-1.12px] lg:text-[32px] lg:leading-[73.46px] lg:tracking-[-1.28px]">Visual Identity</h2>
+        <p class="text-[13px] leading-[2.32] text-mint-body lg:text-[18px]">Our imagery lives in the dark: Dither-ASCII, meshes, and light that resolve into form. It’s how we show what MINT actually does, turning raw points into something real.</p>
+      </div>
+      <div class="reveal relative aspect-[1248/702] w-full overflow-hidden rounded-[24px] bg-black lg:rounded-[82px]">
+        <img class="absolute left-1/2 top-[14.3%] h-[71.55%] w-[80.2%] -translate-x-1/2 object-cover" src="assets/brandsite/application.png" alt="MINT identity applied to a social profile, conference badge and browser tab" loading="lazy" />
+      </div>
+      <div class="reveal flex flex-col gap-[3px] capitalize lg:gap-2 ">
+        <h2 class="text-[28px] font-semibold leading-[28px] tracking-[-1.12px] lg:text-[32px] lg:leading-[73.46px] lg:tracking-[-1.28px]">Application</h2>
+        <p class="text-[13px] leading-[2.32] text-mint-body lg:text-[18px]">From the favicon in your browser tab to the badge around your neck at a conference, the new identity is rolling out across our site, docs, social, and product. You can expect it everywhere MINT shows up.</p>
+      </div>
+      <div class="reveal relative aspect-[1248/702] w-full overflow-hidden rounded-[24px] bg-black lg:rounded-[82px]">
+        <img class="absolute inset-0 h-full w-full object-cover" src="assets/brandsite/looking-ahead.png" alt="MINT brand on a conference stage screen" loading="lazy" />
+      </div>
+      <div class="reveal flex flex-col gap-[3px] capitalize lg:gap-2 ">
+        <h2 class="text-[28px] font-semibold leading-[28px] tracking-[-1.12px] lg:text-[32px] lg:leading-[73.46px] lg:tracking-[-1.28px]">Looking ahead</h2>
+        <p class="text-[13px] leading-[2.32] text-mint-body lg:text-[18px]">We’re just getting started. We plan to keep shipping new model capabilities, faster generation, and more ways to plug MINT into the tools you already use, so it’s always the first thing you reach for when you need 3D. The look is new. The commitment isn’t. Our team of engineers, designers, and builders will keep making MINT faster, more reliable, and easier to use.</p>
+      </div>
+  </article>
+</main>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="mx-auto max-w-[1512px] px-4 pb-[42px] pt-[49px] lg:px-[72px] lg:pt-[48px]">
+  <div class="flex items-center justify-center pt-6 lg:justify-between">
+    <a href="index.html" class="hidden h-8 items-center gap-[14px] lg:flex" aria-label="Mint Modeler home">
+      <span class="flex items-center gap-[9px]">
+        <span class="grid size-8 place-items-center rounded-[8.883px] bg-mint-red"><img src="assets/img/logo-m.svg" width="15.263" height="12.21" alt="" /></span>
+        <img src="assets/img/wordmark.svg" width="49.2115" height="17.5847" alt="mint" />
+      </span>
+      <img src="assets/img/nav-divider.svg" class="h-[15.5px] w-px" alt="" />
+      <img src="assets/img/modeler.svg" width="76.39" height="16.333" alt="Modeler" />
+    </a>
+    <nav class="flex items-center gap-3">
+      <a class="nav-link" href="https://mint.gg/guides" target="_blank" rel="noopener">Guide</a>
+      <a class="nav-link" href="https://docs.mint.gg/developers/modeler" target="_blank" rel="noopener">Docs</a>
+      <a class="nav-link" href="brand.html">Brandkit</a>
+      <a class="nav-link" href="https://x.com/mintdotgg" target="_blank" rel="noopener">Social</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="js/common.js"></script>
+</body>
+</html>
