@@ -316,3 +316,22 @@ html[data-theme="light"] .widget-menu { background: #fff !important; border-colo
 html[data-theme="light"] main > div.bg-mint-panel { background: #fff; }
 html[data-theme="light"] .asset-btn[aria-current="page"] { border-left-color: #0a0a0a; }
 html[data-theme="light"] body::after { display: none; }
+
+/* ---------- hero CTA row on phones ----------
+   The pixel type at 21px made the pair wider than a phone (worst with the
+   returning-visitor label "Connect your agent"). Smaller type, tighter
+   padding, and wrap as a last resort so nothing is ever clipped. */
+@media (max-width: 1023px) {
+  .hero-ctas { flex-wrap: wrap; justify-content: center; row-gap: 10px; max-width: calc(100vw - 32px); }
+  .hero-ctas .btn-light, .hero-ctas .btn-ghost { font-size: 18px; letter-spacing: .03em; height: 40px; }
+  .hero-ctas .btn-light { min-width: 0; padding-left: 12px; padding-right: 12px; }
+  .hero-ctas .btn-ghost { gap: 8px; padding-left: 10px; }
+}
+@media (max-width: 400px) {
+  .hero-ctas .btn-light, .hero-ctas .btn-ghost { font-size: 17px; letter-spacing: .02em; }
+  .hero-ctas .btn-light { padding-left: 10px; padding-right: 10px; }
+  .hero-ctas { column-gap: 6px; }
+}
+/* landing headline never wraps per line, so step it down on narrow phones */
+@media (max-width: 380px) { header h1 { font-size: 40px !important; } }
+@media (max-width: 340px) { header h1 { font-size: 35px !important; } }
