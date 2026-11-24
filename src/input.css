@@ -207,15 +207,16 @@ h1, h2, h3 {
   letter-spacing: 0.015em !important;
   text-transform: uppercase !important;
 }
-/* page heroes (landing, brand, get-started) */
-header h1, main > section h1, #cta-stage h2 {
-  font-size: 50px !important; line-height: .9 !important;
-}
-@media (min-width: 1024px) {
-  header h1, main > section h1, #cta-stage h2 { font-size: 88px !important; line-height: .88 !important; }
-}
-/* hero headline: keep it on one line per row at phone widths */
-@media (max-width: 420px) { header h1 { font-size: 44px !important; } }
+/* page heroes: landing + brand share one scale (brand's sits beside a video, so it sets the ceiling) */
+header h1 { font-size: 44px !important; line-height: .92 !important; }
+@media (min-width: 1024px) { header h1 { font-size: 48px !important; } }
+@media (min-width: 1280px) { header h1 { font-size: 62px !important; line-height: .9 !important; } }
+@media (min-width: 1440px) { header h1 { font-size: 72px !important; } }
+/* brand hero text column: never wider than the space next to the video */
+header section > div.text-center { min-width: 0; }
+/* get-started title + final CTA */
+main > section h1, #cta-stage h2 { font-size: 50px !important; line-height: .9 !important; }
+@media (min-width: 1024px) { main > section h1, #cta-stage h2 { font-size: 88px !important; line-height: .88 !important; } }
 /* card titles written with utilities (built-for, ship-faster, brand sections) */
 article h3:not(.h-card), #ship h3 { font-size: 26px !important; line-height: 1 !important; }
 #built-for article h3 { font-size: 22px !important; white-space: normal !important; }
